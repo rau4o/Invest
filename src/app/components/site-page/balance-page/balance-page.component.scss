@@ -1,0 +1,128 @@
+.container {
+  background-color: #ffffff;
+  padding: 0 2rem;
+  height: 100vh;
+  .title {
+    margin-top: 30px;
+    font-weight: 600;
+  }
+  .info-title {
+    margin-top: 40px;
+  }
+  .balance-container {
+    margin-top: 40px;
+    background: #FFFFFF;
+    border: 1px solid #E4E4E4;
+    box-sizing: border-box;
+    border-radius: 16px;
+    width: 580px;
+    height: 207px;
+    .balance-title {
+      font-family: Quicksand;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 28px;
+      color: rgba(0, 0, 0, 0.87);
+      padding: 16px;
+    }
+    .come-container {
+      display: flex;
+      justify-content: space-around;
+      p {
+        font-family: Roboto;
+        font-weight: 400;
+        font-size: 56px;
+        line-height: 56px;
+        color: #272727;
+      }
+      .type-come {
+        .amount {
+          font-size: 24px;
+          line-height: 24px;
+          color: #272727;
+          text-align: center;
+        }
+        div {
+          margin-bottom: 10px;
+          .outcome {
+            display: inline;
+            font-size: 16px;
+            line-height: 14px;
+            color: #686868;
+          }
+          img {
+            float: left;
+            height: 24px;
+            width: 24px;
+            margin-right: 8px;
+          }
+        }
+        div {
+          margin-bottom: 10px;
+          .income {
+            display: inline;
+            width: auto;
+            height: auto;
+            font-size: 16px;
+            line-height: 14px;
+            color: #686868;
+          }
+          img {
+            float: left;
+            height: 24px;
+            width: 24px;
+            margin-right: 8px;
+          }
+        }
+      }
+    }
+  }
+  .btn-container {
+    width: 580px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 27px;
+    .btn-update {
+      border: none;
+      width: 274px;
+      height: 40px;
+      background: #F9F5FF;
+      border-radius: 8px;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 16px;
+      color: #5C00D0;
+      cursor: pointer;
+    }
+  }
+  .history-container {
+    .history-item {
+      width: 580px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      .type-amount {
+        width: auto;
+        height: auto;
+        margin-top: 5px;
+        font-size: 16px;
+        line-height: 16px;
+        color: #000000;
+        span {
+          font-size: 14px;
+          line-height: 14px;
+          color: #999999;
+        }
+      }
+      .in-amount {
+        width: auto;
+        height: auto;
+        font-size: 16px;
+        line-height: 16px;
+        color: #5C00D0;
+      }
+    }
+  }
+}

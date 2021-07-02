@@ -1,0 +1,236 @@
+<div class="modal-container">
+  <div class="modal-header"><img (click)="onClose(false)" src="assets/images/ic_cancel.png"></div>
+  <div class="modal-body" *ngIf="nextState === 'addingAmount'">
+    <p class="modal-title">Withdraw money</p>
+    <mat-form-field appearance="none" class="add-border spacing modal-input">
+      <mat-label>Withdraw amount</mat-label>
+      <span matPrefix>$&nbsp;</span>
+      <input matInput placeholder="Update amount" [formControl]="amountSum">
+    </mat-form-field>
+    <div class="btn-container">
+      <button class="btn-cancel" (click)="onClose(false)">Cancel</button>
+      <button class="btn-next" [disabled]="amountSum.invalid" [ngClass]="{'btn-n-next': amountSum.valid}" (click)="onNext('selectCardState')">Next</button>
+    </div>
+  </div>
+  <div class="modal-body" *ngIf="nextState === 'selectCardState'">
+    <p class="modal-title">Withdraw money</p>
+    <p class="modal-subtitle">Choose the way you want to withdraw money</p>
+    <div class="way-update" *ngFor="let item of itemsPayType; let idx = index">
+      <div class="way-item" (click)="onClicked(item, idx)">
+        <img src="{{item.selected ? item.srcSelected : item.src}}">
+        <p [ngClass]="{'selected': item.selected}">{{item.name}}</p>
+        <svg *ngIf="item.selected" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 11.6667L9.66667 16.3333L19 7" stroke="#5C00D0" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+    <div class="btn-container">
+      <button class="btn-cancel" (click)="nextState = 'addingAmount'">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5.14286 12L10.1429 17M18 12H5.14286H18ZM5.14286 12L10.1429 7L5.14286 12Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class="btn-next" [disabled]="!selectPayType" [ngClass]="{'btn-n-next': selectPayType}" (click)="onNext()">
+        <span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.8571 12L13.8571 17M6 12H18.8571H6ZM18.8571 12L13.8571 7L18.8571 12Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+  <!--  Card -->
+  <div class="modal-body-third" *ngIf="nextState === 'fillCard'">
+    <p class="modal-title title-third">Withdraw money</p>
+    <form [formGroup]="addCardForm">
+      <mat-form-field appearance="none" class="add-border spacing modal-input">
+        <mat-label>Card number</mat-label>
+        <input matInput placeholder="1234 1234 1234 1234"
+               [formControl]="getCardNumberControl()"
+               [textMask]="{mask: cardMaskFunction, guide: false, showMask: true}"
+               formControlName="cardNumber">
+      </mat-form-field>
+      <div class="input-container">
+        <mat-form-field appearance="none" class="add-border spacing modal-input m-input">
+          <mat-label>Expire date</mat-label>
+          <input matInput placeholder="Expire date" maxlength="5"  mask="00/00"
+                 formControlName="date">
+        </mat-form-field>
+        <mat-form-field appearance="none" class="add-border spacing modal-input m-input">
+          <mat-label>CVC/CVV</mat-label>
+          <input matInput type="password" placeholder="CVC/CVV"
+                 maxlength="3" oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+                 formControlName="cvc">
+        </mat-form-field>
+      </div>
+    </form>
+    <div class="btn-container">
+      <button class="btn-cancel" (click)="nextState = 'selectCardState'">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5.14286 12L10.1429 17M18 12H5.14286H18ZM5.14286 12L10.1429 7L5.14286 12Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class="btn-next" [disabled]="addCardForm.invalid" [ngClass]="{'btn-n-next': addCardForm.valid}" (click)="onNext('savedCard')">
+        <span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.8571 12L13.8571 17M6 12H18.8571H6ZM18.8571 12L13.8571 7L18.8571 12Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div class="modal-body-fourth" *ngIf="nextState === 'savedCard'">
+    <p class="modal-title title-width">Withdraw money</p>
+    <div class="card-body">
+      <div *ngFor="let item of savedCard; let idx = index" (click)="onClickedSavedCard(item, idx)">
+        <img class="img-visa" src="{{item.src}}">
+        <span>• &nbsp;</span>
+        <p>{{item.name}}</p>
+        <img *ngIf="item.selected" class="img-ic-tick" src="assets/images/ic_tick-2.png">
+      </div>
+    </div>
+    <hr>
+    <div class="add-body">
+      <button class="btn-add" (click)="onAddCard()">Add card</button>
+    </div>
+    <div class="btn-container btn-width">
+      <button class="btn-cancel" (click)="nextState = 'fillCard'">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5.14286 12L10.1429 17M18 12H5.14286H18ZM5.14286 12L10.1429 7L5.14286 12Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class="btn-next" [ngClass]="{'btn-n-next': cardSelectedState}" (click)="onNext('confirmUpdate')">
+        <span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.8571 12L13.8571 17M6 12H18.8571H6ZM18.8571 12L13.8571 7L18.8571 12Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div class="modal-body-fifth" *ngIf="nextState === 'confirmUpdate'">
+    <p class="modal-title title-confirm">Confirm withdraw</p>
+    <p class="modal-subtitle add-space">From</p>
+    <mat-form-field appearance="none" class="add-border spacing">
+      <mat-icon matPrefix *ngIf="currentConfirm.src"><img src="{{currentConfirm.src}}" style="width: 30px; height: 20px">&nbsp;</mat-icon>
+      <mat-select [(value)]="currentConfirm">
+        <mat-option style="padding-left: 10px" [value]="item" *ngFor="let item of savedCard">
+          <img *ngIf="item.src" src="{{item.src}}" style="width: 30px; height: 20px">
+          &nbsp;{{item.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p class="modal-subtitle add-space">To</p>
+    <div class="my-balance-confirm-container">
+      <p>My balance</p>
+      <p>$ {{currentConfirm.balance}}</p>
+    </div>
+    <div class="updating-balance-container">
+      <p class="updating-info">You’re updating</p>
+      <p class="updating-amount">$ {{amountSum.value}}</p>
+    </div>
+    <hr>
+    <button class="btn" (click)="onConfirm()">Confirm</button>
+    <button class="btn-back" (click)="onNext('savedCard')">Back</button>
+  </div>
+  <!--  Bank-->
+  <div class="modal-body-third" *ngIf="nextState === 'fillBank'">
+    <p class="modal-title title-third">Withdraw money</p>
+    <form [formGroup]="addBankForm" class="bank-form">
+      <mat-form-field appearance="none" class="add-border spacing modal-input">
+        <mat-label>Routing number</mat-label>
+        <input matInput placeholder="1234456789"
+               formControlName="routingNumber">
+      </mat-form-field>
+      <mat-form-field appearance="none" class="add-border spacing modal-input m-input">
+        <mat-label>Account number</mat-label>
+        <input matInput placeholder="1234567891234"
+               formControlName="accountNumber">
+      </mat-form-field>
+    </form>
+    <div class="btn-container">
+      <button class="btn-cancel" (click)="nextState = 'selectCardState'">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5.14286 12L10.1429 17M18 12H5.14286H18ZM5.14286 12L10.1429 7L5.14286 12Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class="btn-next" [disabled]="addBankForm.invalid" [ngClass]="{'btn-n-next': addBankForm.valid}" (click)="onNext('savedBank')">
+        <span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.8571 12L13.8571 17M6 12H18.8571H6ZM18.8571 12L13.8571 7L18.8571 12Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div class="modal-body-fourth" *ngIf="nextState === 'savedBank'">
+    <p class="modal-title title-width">Withdraw money</p>
+    <div class="card-body">
+      <div *ngFor="let item of savedBank; let idx = index" (click)="onClickedSavedBank(item, idx)">
+        <img class="img-visa" style="width: 32px; height: 32px" src="{{item.src}}">
+        <span>• &nbsp;</span>
+        <p>{{item.name}}</p>
+        <img *ngIf="item.selected" class="img-ic-tick" src="assets/images/ic_tick-2.png">
+      </div>
+    </div>
+    <hr>
+    <div class="add-body">
+      <button class="btn-add" (click)="onAddBank()">Add account</button>
+    </div>
+    <div class="btn-container btn-width">
+      <button class="btn-cancel" (click)="nextState = 'fillBank'">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5.14286 12L10.1429 17M18 12H5.14286H18ZM5.14286 12L10.1429 7L5.14286 12Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <button class="btn-next" [ngClass]="{'btn-n-next': bankSelectedState}" (click)="onNext('confirmUpdateBank')">
+        <span>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M18.8571 12L13.8571 17M6 12H18.8571H6ZM18.8571 12L13.8571 7L18.8571 12Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+  <div class="modal-body-fifth" *ngIf="nextState === 'confirmUpdateBank'">
+    <p class="modal-title title-confirm">Confirm withdraw</p>
+    <p class="modal-subtitle add-space">From</p>
+    <mat-form-field appearance="none" class="add-border spacing">
+      <mat-icon matPrefix *ngIf="currentConfirmBank.src"><img src="{{currentConfirmBank.src}}" style="width: 30px; height: 20px">&nbsp;</mat-icon>
+      <mat-select [(value)]="currentConfirmBank">
+        <mat-option style="padding-left: 10px" [value]="item" *ngFor="let item of savedBank">
+          <img *ngIf="item.src" src="{{item.src}}" style="width: 30px; height: 20px">
+          &nbsp;{{item.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p class="modal-subtitle add-space">To</p>
+    <div class="my-balance-confirm-container">
+      <p>My balance</p>
+      <p>$ {{currentConfirmBank.balance}}</p>
+    </div>
+    <div class="updating-balance-container">
+      <p class="updating-info">You’re updating</p>
+      <p class="updating-amount">$ {{amountSum.value}}</p>
+    </div>
+    <hr>
+    <button class="btn" (click)="onConfirm()">Confirm</button>
+    <button class="btn-back" (click)="onNext('savedBank')">Back</button>
+  </div>
+  <!--  result-->
+  <div class="modal-result-body" *ngIf="nextState === 'loading'">
+    <mat-spinner></mat-spinner>
+  </div>
+  <div class="modal-result-body" *ngIf="nextState === 'showResult'">
+    <ng-container *ngIf="!showResult; else success">
+      <img src="assets/images/ic_tick.png">
+      <p>Payed succesfully</p>
+    </ng-container>
+    <ng-template #success>
+      <img src="assets/images/ic_cancel2.png">
+      <p>Payment failed. Try again.</p>
+    </ng-template>
+    <button class="btn btn-close" (click)="onClose(result)">Close</button>
+  </div>
+</div>
+

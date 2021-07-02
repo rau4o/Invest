@@ -1,0 +1,35 @@
+<div class="modal-container" *ngIf="this.state === 'noLoading'">
+  <div class="modal-header">
+    <img src="assets/images/ic_cancel.png">
+  </div>
+  <div class="modal-body">
+    <p class="modal-title">Raise to top</p>
+    <p class="modal-subtitle">Be on top of offers for $10 for week</p>
+    <p class="modal-info">Pay with</p>
+    <mat-form-field appearance="none" class="add-border spacing">
+      <mat-label>My balance</mat-label>
+      <mat-icon matPrefix *ngIf="current.icon"><img src="{{current.icon}}" style="width: 30px; height: 20px">&nbsp;</mat-icon>
+      <mat-select [(value)]="current">
+        <mat-option style="padding-left: 10px" [value]="item" *ngFor="let item of items">
+          <img *ngIf="item.icon" src="{{item.icon}}" style="width: 30px; height: 20px">
+          &nbsp;{{item.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button class="btn btn-pay" (click)="onPay()">Pay 10$</button>
+  </div>
+</div>
+<div class="modal-container loading-body" *ngIf="state === 'loading'">
+  <mat-spinner></mat-spinner>
+</div>
+<div class="modal-container loading-body" *ngIf="state === 'success'">
+  <ng-container *ngIf="!showResult; else success">
+    <img src="assets/images/ic_tick.png">
+    <p>Payed succesfully</p>
+  </ng-container>
+  <ng-template #success>
+    <img src="assets/images/ic_cancel2.png">
+    <p>Payment failed. Try again.</p>
+  </ng-template>
+  <button class="btn btn-close" (click)="onClose()">Close</button>
+</div>

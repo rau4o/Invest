@@ -1,0 +1,43 @@
+<div class="container flex-container" *ngIf="!loading">
+  <h1 class="title">Sign up</h1>
+  <p class="register">
+    Already have an account?
+    <a class="link"
+       routerLink="/auth/login">Log in</a>
+  </p>
+  <form class="form-container" [formGroup]="registrationForm">
+    <mat-form-field appearance="none" class="add-border spacing">
+      <mat-label>Company email</mat-label>
+      <input matInput placeholder="pat@example.com" formControlName="email">
+    </mat-form-field>
+    <mat-form-field appearance="none" class="add-border spacing">
+      <mat-label>Password</mat-label>
+      <input matInput placeholder="Password"
+             [type]="hidePassword ? 'password' : 'text'"
+             formControlName="password">
+      <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hidePassword">
+        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-form-field appearance="none" class="add-border">
+      <mat-label>Repeat Password</mat-label>
+      <input matInput placeholder="Repeat Password"
+             [type]="hidePassword ? 'password' : 'text'"
+             formControlName="confirmPassword">
+      <button mat-icon-button matSuffix
+              (click)="hidePassword = !hidePassword"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hidePassword">
+        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+  </form>
+  <div class="term-of-use-body">
+    <input type="checkbox" class="checkbox">
+    <p>I agree to Investy <span class="underline"> Terms of Use </span> and <span class="underline"> Privacy Policy </span></p>
+  </div>
+  <button type="submit" class="btn btn-login" [disabled]="registrationForm.invalid" (click)="submit()">Next</button>
+</div>
+<div class="container flex-container" *ngIf="loading">
+  <mat-spinner></mat-spinner>
+</div>

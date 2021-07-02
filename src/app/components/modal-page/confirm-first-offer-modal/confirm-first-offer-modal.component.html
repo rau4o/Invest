@@ -1,0 +1,31 @@
+<div class="container" *ngIf="!loading">
+  <p class="title">Confirm your offer</p>
+  <p class="company-name">{{companyName}}</p>
+  <p class="company-industry">{{industryText}}</p>
+  <p class="company-product">Product type:<span>{{productType}}</span></p>
+  <p class="loan">Loan terms</p>
+  <p class="data-first">${{loanAmount}}, {{days}} days, {{benefit}}% discount</p>
+  <p class="special">Special offer</p>
+  <p class="special-data">${{specialOfferData.amount}}, 2 days, {{specialOfferData.benefit}}% discount</p>
+  <p class="about">About</p>
+  <p class="desc">{{aboutText}}</p>
+  <p class="documents">Documents</p>
+  <div class="pdf-container">
+    <div class="pdf-body" *ngFor="let file of pdfList; let idx = index">
+      <div class="pdf-item">
+        <div class="pdf-i">
+          <img class="img-pdf" src="assets/images/pdf.png">
+          <p>{{file.name | slice: 0:18}}... <br><span> 1.3 MB</span></p>
+          <mat-progress-bar *ngIf="file.show" mode="indeterminate"></mat-progress-bar>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btn-container">
+    <button class="btn-confirm" (click)="onConfirm()">Confirm and send</button>
+    <button class="btn-save" (click)="onSave()">Save to drafts</button>
+  </div>
+</div>
+<div class="container spinner" *ngIf="loading">
+  <mat-spinner></mat-spinner>
+</div>

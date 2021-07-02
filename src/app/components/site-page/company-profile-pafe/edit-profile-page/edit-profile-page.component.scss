@@ -1,0 +1,96 @@
+.container {
+  background-color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  .side-nav {
+    width: 245px;
+    border-right: 1px solid #DDDDDD;
+    button {
+      margin-top: 38px;
+      margin-left: 38px;
+      width: auto;
+      height: 20px;
+      border: none;
+      background: none;
+      font-size: 20px;
+      color: #272727;
+      display: flex;
+      cursor: pointer;
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
+  .edit-body {
+    padding: 0 2rem;
+    .title {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 40px;
+      line-height: 40px;
+      color: var(--black-color);
+      margin-top: 32px;
+    }
+
+    .subtitle {
+      margin-top: 30px;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 16px;
+      color: #272727;
+    }
+
+    .edit-profile-form-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 352px;
+      .edit-input {
+        width: 352px;
+        margin-bottom: 12px;
+        color: #272727;
+      }
+    }
+
+    textarea {
+      width: 352px;
+      height: 158px;
+      font-family: SF Pro Text;
+      border: 1px solid #E4E4E4;
+      font-size: 16px;
+      line-height: 22px;
+      color: #272727;
+      padding: 16px;
+      resize: none;
+      border-radius: 10px;
+    }
+    .btn-container {
+      display: flex;
+      margin-top: 40px;
+      .btn-save {
+        width: 78px;
+        height: 48px;
+        background: #F4F4F4;
+        border-radius: 16px;
+        border: none;
+        margin-right: 30px;
+        cursor: pointer;
+      }
+      .enabled-btn-save {
+        background: #5C00D0;
+        color: #FFFFFF;
+      }
+      .btn-cancel {
+        width: 78px;
+        height: 48px;
+        border-radius: 16px;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+}

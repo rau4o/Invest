@@ -1,0 +1,160 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  .title {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 24px;
+    text-align: center;
+    color: #000000;
+  }
+  .company-name {
+    font-size: 20px;
+    line-height: 20px;
+    color: #000000;
+    margin-top: 40px;
+  }
+  .company-industry {
+    font-size: 16px;
+    line-height: 16px;
+    color: #999999;
+  }
+  .company-product {
+    font-size: 16px;
+    line-height: 16px;
+    color: #999999;
+    span {
+      font-size: 16px;
+      line-height: 16px;
+      color: #272727;
+    }
+  }
+  .loan {
+    margin-top: 32px;
+    font-size: 16px;
+    line-height: 16px;
+    color: #999999;
+  }
+  .data-first {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    color: #000000;
+  }
+  .special {
+    margin-top: 32px;
+    font-size: 16px;
+    line-height: 16px;
+    color: #999999;
+  }
+  .special-data {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    color: #000000;
+  }
+  .about {
+    margin-top: 32px;
+    font-size: 16px;
+    line-height: 16px;
+    color: #999999;
+  }
+  .desc {
+    font-size: 16px;
+    line-height: 22px;
+    color: #272727;
+  }
+  .documents {
+    margin-top: 32px;
+    font-size: 16px;
+    line-height: 16px;
+    color: #999999;
+  }
+  .pdf-container {
+    width: 466px;
+    background: #FFFFFF;
+    border: 1px solid #F4F4F4;
+    box-sizing: border-box;
+    border-radius: 8px;
+    .pdf-body {
+      .pdf-item {
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        padding: 20px;
+        div {
+          display: flex;
+          width: 100%;
+          .img-pdf {
+            width: 15px;
+            height: 18px;
+            margin-right: 11px;
+          }
+          p {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 14px;
+            color: #000000;
+            margin-bottom: 0;
+            width: 220px;
+            span {
+              font-style: normal;
+              font-weight: normal;
+              font-size: 13px;
+              line-height: 13px;
+              color: #999999;
+            }
+          }
+          .mat-progress-bar {
+            width: 30%;
+            margin-top: 5px;
+            margin-left: 20px;
+          }
+        }
+        .img-cancel {
+          width: 20px;
+          height: 20px;
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  .btn-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    .btn-confirm {
+      width: 432px;
+      height: 48px;
+      background: #5C00D0 !important;
+      border-radius: 16px;
+      border: none;
+      background: none;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 16px;
+      color: #FFFFFF;
+    }
+    .btn-save {
+      border: none;
+      background: none;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 16px;
+      color: #272727;
+      width: 432px;
+      height: 48px;
+    }
+  }
+}
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}

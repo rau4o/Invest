@@ -1,0 +1,89 @@
+.modal-header {
+  display: flex;
+  justify-content: flex-end;
+  img {
+    width: 23px;
+    height: 23px;
+    cursor: pointer;
+  }
+}
+.modal-body-fifth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .title-confirm {
+    width: 352px;
+    font-weight: 500;
+    font-size: 24px;
+    color: #000000;
+  }
+  .add-space {
+    margin-top: 24px;
+    width: 352px;
+  }
+  .my-balance-confirm-container {
+    width: 352px;
+    height: 52px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    p {
+      width: auto;
+      margin-bottom: 0;
+      font-size: 16px;
+      line-height: 16px;
+      color: #272727;
+    }
+  }
+  .updating-balance-container {
+    width: 352px;
+    height: 52px;
+    margin-top: 30px;
+    background: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    .updating-info {
+      font-size: 16px;
+      line-height: 16px;
+      margin-bottom: 0;
+      color: #272727;
+    }
+    .updating-amount {
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 24px;
+      margin-bottom: 0;
+      color: #000000;
+    }
+  }
+  hr {
+    width: 352px;
+    height: 2px;
+    border: 1px solid #E4E4E4;
+  }
+  .btn {
+    margin-top: 30px;
+    cursor: pointer;
+  }
+  .btn-back {
+    width: 352px;
+    height: 49px;
+    left: 544px;
+    top: 649px;
+    border: none;
+    background: none;
+    border-radius: 16px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    color: #272727;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,19 @@
+<div class="container">
+  <mat-drawer-container class="mat-drawer-container" autosize>
+    <router-outlet></router-outlet>
+    <mat-drawer #drawer opened class="main-sidenav" mode="side">
+      <div class="sidenav-content">
+        <img class="logo-logo" src="assets/images/logo-vvv.png">
+        <img (click)="goToMain()" class="logo" src="assets/images/investy.png">
+        <ul class="a-sidenav">
+          <li *ngFor="let link of links" class="{{isActiveLink(link.url)}}">
+            <img [src]="link.imgSrc">
+            <a [routerLink]="[link.url]"
+               class="sidenav-link">{{link.name}}</a>
+          </li>
+        </ul>
+        <button class="btn btn-add-offer" (click)="addOffer()">+ Add offer</button>
+      </div>
+    </mat-drawer>
+  </mat-drawer-container>
+</div>

@@ -1,0 +1,72 @@
+<div class="container">
+  <p class="title">My offers</p>
+  <p class="info-title">Recently added</p>
+  <div *ngFor="let offer of offerList">
+    <div class="offer-body" (click)="onOpenOffer(offer.id)">
+      <p>
+        ${{offer.amount}}, {{offer.days}} days, {{offer.benefit}} benefit<br>
+        <span>{{offer.date}}</span>
+        <span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.99999 9.33317C8.73637 9.33317 9.33332 8.73622 9.33332 7.99984C9.33332 7.26346 8.73637 6.6665 7.99999 6.6665C7.26361 6.6665 6.66666 7.26346 6.66666 7.99984C6.66666 8.73622 7.26361 9.33317 7.99999 9.33317Z" stroke="#6E6E6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14.6667 8.00016C12.8887 11.1115 10.6667 12.6668 8.00001 12.6668C5.33334 12.6668 3.11134 11.1115 1.33334 8.00016C3.11134 4.88883 5.33334 3.3335 8.00001 3.3335C10.6667 3.3335 12.8887 4.88883 14.6667 8.00016Z" stroke="#6E6E6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          {{offer.views}}
+        </span>
+      </p>
+      <div style="display: flex">
+        <div class="pdf-content" *ngFor="let pdf of offer.pdfCount; let idx = index">
+          <div class="pdf-body" *ngIf="idx < 2; else additional">
+            <img src="assets/images/pdf.png">
+            <p>Agreement wit...</p>
+          </div>
+        </div>
+        <ng-template #additional>
+          <div class="additional-div">+{{offer.pdfCount.length}}</div>
+        </ng-template>
+      </div>
+      <p class="review-text"
+         [ngClass]="{
+         'review' : offer.status === 1,
+         'published' : offer.status === 2}">
+        {{offer.statusName}}
+      </p>
+    </div>
+  </div>
+  <div class="archieve-info-title" (click)="onShowArchive()">
+    <p class="info-title svg">Archieve offers</p>
+    <img [@rotatedState]='state' src="assets/images/ic_chevron.png">
+  </div>
+  <ng-container *ngIf="showArchive">
+    <div *ngFor="let offer of archiveOffers">
+    <div class="offer-body">
+      <p>
+        {{offer.amount}}, {{offer.days}} days, {{offer.benefit}} benefit<br>
+        <span>{{offer.date}}</span>
+        <span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7.99999 9.33317C8.73637 9.33317 9.33332 8.73622 9.33332 7.99984C9.33332 7.26346 8.73637 6.6665 7.99999 6.6665C7.26361 6.6665 6.66666 7.26346 6.66666 7.99984C6.66666 8.73622 7.26361 9.33317 7.99999 9.33317Z" stroke="#6E6E6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14.6667 8.00016C12.8887 11.1115 10.6667 12.6668 8.00001 12.6668C5.33334 12.6668 3.11134 11.1115 1.33334 8.00016C3.11134 4.88883 5.33334 3.3335 8.00001 3.3335C10.6667 3.3335 12.8887 4.88883 14.6667 8.00016Z" stroke="#6E6E6E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          {{offer.views}}
+        </span>
+      </p>
+      <div style="display: flex">
+        <div class="pdf-content" *ngFor="let pdf of offer.pdfCount; let idx = index">
+          <div class="pdf-body" *ngIf="idx < 2; else additional">
+            <img src="assets/images/pdf.png">
+            <p>Agreement wit...</p>
+          </div>
+        </div>
+        <ng-template #additional>
+          <div class="additional-div">+{{offer.pdfCount.length}}</div>
+        </ng-template>
+      </div>
+      <p class="review-text"
+         [ngClass]="{'collected' : offer.status === 1}">
+        {{offer.status === 1 ? 'Collected' : 'Published'}}
+      </p>
+    </div>
+  </div>
+  </ng-container>
+</div>

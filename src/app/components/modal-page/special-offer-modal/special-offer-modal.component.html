@@ -1,0 +1,48 @@
+<div class="modal-container">
+  <div class="modal-header">
+    <img src="assets/images/ic_cancel.png" (click)="onCancel()">
+  </div>
+  <p class="modal-title">Special offer</p>
+  <p class="modal-subtitle">If you need part of loan amount very soon propose to <br> investers special offer by more discounts.</p>
+  <form class="form-container" [formGroup]="specialOfferForm">
+    <mat-form-field appearance="none" class="add-border spacing mat-input">
+      <mat-label>Loan amount</mat-label>
+      <input matInput type="text" mask="separator.2" thousandSeparator=" " placeholder="Loan amount" formControlName="loanAmount">
+    </mat-form-field>
+    <mat-form-field appearance="none" class="add-border spacing mat-input">
+      <mat-label>Days for fundraiser</mat-label>
+      <input matInput placeholder="Days for fundraiser" formControlName="fundraiser">
+    </mat-form-field>
+    <mat-form-field appearance="none" class="add-border spacing mat-input">
+      <mat-label>Investor benefit</mat-label>
+      <input matInput placeholder="Investor benefit" formControlName="benefit">
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="add-border spacing date-border">
+      <mat-label>Return deadline</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="deadline">
+      <mat-datepicker-toggle matSuffix [for]="picker">
+        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </form>
+  <div class="total-return">
+    <div>
+      <p class="total">You’ll return</p>
+      <p (click)="onShowDetails()" class="details">Details <span><img [@rotatedState]='state' src="assets/images/ic_chevron.png"></span></p>
+    </div>
+    <p class="amount">${{totalAmount | mask : 'separator.2'}}</p>
+  </div>
+  <div class="detail-return" *ngIf="showDetails">
+    <div class="detail-item">
+      <p>Loan amount</p>
+      <p>${{offerModel?.amount ? offerModel.amount : specialOfferForm.get('loanAmount').value | mask : 'separator.2'}}</p>
+    </div>
+    <div class="detail-item">
+      <p>Investor benefit</p>
+      <p>${{offerModel?.amount ? offerModel.amount - 1000 : specialOfferForm.get('loanAmount').value - 1000 | mask : 'separator.2'}} ({{offerModel?.benefit ? offerModel.benefit : specialOfferForm.get('benefit').value + '%'}})</p>
+    </div>
+  </div>
+  <hr class="separator-line">
+  <button class="btn btn-add-offer" (click)="onAdd()">Add offer</button>
+</div>

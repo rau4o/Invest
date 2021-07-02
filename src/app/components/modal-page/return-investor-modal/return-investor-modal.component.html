@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="modal-header"><img (click)="onCancel()" src="assets/images/ic_cancel.png"></div>
+  <div class="modal-body-fifth">
+    <p class="modal-title title-confirm">Return investor</p>
+    <p class="modal-subtitle add-space">From</p>
+    <mat-form-field appearance="none" class="add-border spacing">
+      <mat-icon matPrefix *ngIf="currentConfirm.src"><img src="{{currentConfirm.src}}" style="width: 30px; height: 20px">&nbsp;</mat-icon>
+      <mat-select [(value)]="currentConfirm">
+        <mat-option style="padding-left: 10px" [value]="item" *ngFor="let item of savedCard">
+          <img *ngIf="item.src" src="{{item.src}}" style="width: 30px; height: 20px">
+          &nbsp;{{item.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <p class="modal-subtitle add-space">To</p>
+    <mat-form-field appearance="none" class="add-border spacing">
+      <mat-select [(value)]="currentUser">
+        <mat-option style="padding-left: 10px" [value]="item" *ngFor="let item of users">
+          &nbsp;{{item.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="updating-balance-container">
+      <p class="updating-info">You’re returning</p>
+      <p class="updating-amount">$ 850 000</p>
+    </div>
+    <hr>
+    <button class="btn" (click)="onConfirm()">Return $8 500</button>
+    <button class="btn-back" (click)="onCancel()">Cancel</button>
+  </div>
+</div>

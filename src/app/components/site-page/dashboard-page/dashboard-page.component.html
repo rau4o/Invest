@@ -1,0 +1,47 @@
+<div class="container">
+  <p class="title">Dashboard</p>
+  <p class="info-title">My Balance</p>
+  <div class="balance-info">
+    <div class="balance-content my-balance">
+      <p class="sub-p">My balance</p>
+      <p class="custom-p balance">$ 1M</p>
+    </div>
+    <div class="balance-content total-debt">
+      <p class="sub-p">Total debt</p>
+      <p class="custom-p debt">$ 100K</p>
+    </div>
+    <div class="balance-content total-payments">
+      <p class="sub-p">Total payments</p>
+      <p class="custom-p payment">809</p>
+    </div>
+    <div class="balance-content loans">
+      <p class="sub-p">Loans</p>
+      <p class="custom-p loan">27</p>
+    </div>
+  </div>
+  <p class="table-info-title">Last invests</p>
+  <table class="invest-table">
+    <thead>
+    <tr>
+      <th>Investor</th>
+      <th>Invested amount</th>
+      <th>Investor benefit(%)</th>
+      <th>Investor benefit ($)</th>
+      <th>Days left</th>
+      <th>Date of return</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of invests">
+      <td>{{item.name}}</td>
+      <td>${{item.amount | mask: 'separator2.'}}</td>
+      <td>{{item.benefit}}</td>
+      <td>${{item.benefitSum | mask: 'separator2.'}}</td>
+      <td>{{item.days}}</td>
+      <td>{{item.date}}</td>
+      <td><button class="btn-return" (click)="onReturn()">Return</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

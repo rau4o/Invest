@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="side-nav">
+    <div class="btn-container">
+      <button (click)="router.navigateByUrl('/company-profile')">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6.85714 16.0007L13.5238 22.6673M24 16.0007H6.85714H24ZM6.85714 16.0007L13.5238 9.33398L6.85714 16.0007Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        &nbsp; Go back
+      </button>
+    </div>
+  </div>
+  <div class="edit-body">
+    <p class="title">Edit information</p>
+    <p class="subtitle">About company</p>
+    <form [formGroup]="profileForm" class="edit-profile-form-body">
+      <mat-form-field appearance="none" class="add-border spacing edit-input">
+        <mat-label>Company name</mat-label>
+        <input style="padding-left: 10px" matInput placeholder="Company name"
+               formControlName="companyName">
+      </mat-form-field>
+      <mat-form-field appearance="none" class="add-border spacing edit-input">
+        <mat-select formControlName="industry" [(value)]="currentIndustry">
+          <mat-option style="padding-left: 10px" [value]="item" *ngFor="let item of industryList">
+            {{item.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="none" class="add-border spacing edit-input">
+        <mat-select formControlName="productType" [(value)]="currentProduct">
+          <mat-option [value]="item" *ngFor="let item of productList">
+            {{item.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <p class="subtitle">Description</p>
+      <textarea formControlName="desc" name="" id="" cols="30" rows="10"></textarea>
+    </form>
+    <div class="btn-container">
+      <button class="btn-save" [ngClass]="{'enabled-btn-save': profileForm.valid}" [disabled]="profileForm.invalid" (click)="onSave()">Save</button>
+      <button class="btn-cancel" (click)="router.navigateByUrl('/company-profile')">Cancel</button>
+    </div>
+  </div>
+</div>

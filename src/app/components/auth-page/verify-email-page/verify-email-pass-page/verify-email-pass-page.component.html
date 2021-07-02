@@ -1,0 +1,22 @@
+<div class="container flex-container" *ngIf="!loading">
+  <button class="btn-arrow btn-spacing" (click)="router.navigateByUrl('auth/forgot-password')">
+    <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M1.14286 6L6.14286 11M14 6H1.14286H14ZM1.14286 6L6.14286 1L1.14286 6Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg> &nbsp; Back</button>
+  <h1 class="title">Verify email</h1>
+  <p class="info">
+    Enter the confirmation code we’ve sent to kurmashev@gmail.com
+  </p>
+  <form class="form-container" [formGroup]="verifyForm">
+    <input class="input-code" [maxLength]="1" formControlName="first">
+    <input class="input-code" [maxLength]="1" formControlName="second">
+    <input class="input-code" [maxLength]="1" formControlName="third">
+    <input class="input-code" [maxLength]="1" formControlName="fourth">
+  </form>
+  <p class="info spacing">Didn’t recieve code?<a class="link">&nbsp; Send again</a></p>
+  <button type="submit" [disabled]="verifyForm.invalid" class="btn btn-next" (click)="moveTo()">Next</button>
+</div>
+<div class="container flex-container" *ngIf="loading">
+  <mat-spinner></mat-spinner>
+</div>
+

@@ -1,0 +1,101 @@
+.container {
+  background-color: white;
+  height: 100vh;
+  padding: 0 2rem;
+  .title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 40px;
+    color: var(--black-color);
+    margin-top: 32px;
+  }
+  .profile-info-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 523px;
+    height: 269px;
+    margin-top: 37px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    padding: 24px;
+    .profile-name {
+      display: flex;
+      justify-content: space-between;
+      .profile-title {
+        font-weight: 500;
+        font-size: 22px;
+        color: #000000;
+      }
+      button {
+        border: none;
+        background: none;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 16px;
+        color: #5C00D0;
+        cursor: pointer;
+      }
+    }
+    .profile-sub-title {
+      font-size: 16px;
+      line-height: 16px;
+      color: #999999;
+    }
+    .profile-sub-sub-title {
+      font-size: 16px;
+      line-height: 16px;
+      color: #999999;
+      span {
+        font-size: 16px;
+        line-height: 16px;
+        color: #272727;
+      }
+    }
+    div {
+      .profile-desc {
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 16px;
+        color: #000000;
+      }
+
+      .profile-desc-desc {
+        font-size: 16px;
+        color: #272727;
+      }
+    }
+  }
+  .change-pass-body {
+    margin-top: 16px;
+    width: 523px;
+    height: 72px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 24px;
+    p {
+      font-weight: 600;
+      font-size: 16px;
+      color: #000000;
+      margin-bottom: 0;
+    }
+  }
+  .btn-log-out {
+    margin-top: 31px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    color: #272727;
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding-left: 24px;
+  }
+}

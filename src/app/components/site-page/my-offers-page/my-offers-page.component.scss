@@ -1,0 +1,110 @@
+.container {
+  background-color: white;
+  height: 100vh;
+  padding: 0 2rem;
+  .title {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 40px;
+    color: var(--black-color);
+    margin-top: 32px;
+  }
+  .info-title {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    color: #2C2C2C;
+    margin-top: 50px;
+  }
+  .offer-body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.04);
+    border-radius: 8px;
+    height: 117px;
+    padding: 30px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    p {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 20px;
+      color: #000000;
+      span {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 16px;
+        color: #999999;
+      }
+    }
+    .review-text {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 18px;
+      line-height: 18px;
+    }
+    .review {
+      color: #F9AB05;
+    }
+    .published {
+      color: #00CC66;
+    }
+    .collected {
+      color: #00CC66;
+    }
+    .pdf-content {
+      display: flex;
+      .pdf-body {
+        width: 158px;
+        height: 40px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border: 1px solid #F0F0F0;
+        box-sizing: border-box;
+        border-radius: 8px;
+        margin-right: 10px;
+        img {
+          width: 13px;
+          height: 18px;
+        }
+        p {
+          width: auto;
+          height: auto;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 14px;
+          color: #000000;
+          margin-bottom: 0;
+        }
+      }
+    }
+    .additional-div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 38px;
+      height: 40px;
+      border: 1px solid #F0F0F0;
+      box-sizing: border-box;
+      border-radius: 8px;
+    }
+  }
+  .archieve-info-title {
+    display: flex;
+    cursor: pointer;
+    img {
+      width: 24px;
+      height: 24px;
+      margin-top: 49px;
+      margin-left: 10px;
+    }
+  }
+}

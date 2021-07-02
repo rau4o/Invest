@@ -1,0 +1,121 @@
+.container {
+  background-color: white;
+  height: 100vh;
+  padding: 0 2rem;
+  .title {
+    margin-top: 32px;
+    font-weight: 600;
+  }
+  .btn-back {
+    margin-top: 40px;
+    border: none;
+    background: none;
+    font-size: 16px;
+    cursor: pointer;
+    line-height: 19px;
+    width: auto;
+    height: 20px;
+    display: flex;
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .sub-title {
+    margin-top: 40px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 16px;
+    color: #999999;
+  }
+  .loan-info {
+    margin-top: 16px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    color: #000000;
+  }
+  .date-info {
+    margin-top: 16px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 16px;
+    color: #999999;
+  }
+  .offer-info {
+    margin-top: 17px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 20px;
+    color: #F5AD13;
+  }
+  .pdf-container {
+    .pdf {
+      width: 429px;
+      height: 67px;
+      background: #FFFFFF;
+      box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.06);
+      border-radius: 8px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      img {
+        width: 22px;
+        height: 30px;
+        margin-left: 23px;
+      }
+      .pdf-title {
+        width: auto;
+        height: auto;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 14px;
+        color: #000000;
+        margin-bottom: 0;
+        margin-left: 20px;
+        span {
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 14px;
+          color: #999999;
+        }
+      }
+    }
+  }
+  .btn-container {
+    margin-top: 40px;
+    display: flex;
+    .btn-raise {
+      width: 134px;
+      height: 48px;
+      background: #5C00D0;
+      border-radius: 16px;
+      border: none;
+      font-weight: 550;
+      font-size: 16px;
+      line-height: 16px;
+      color: #FFFFFF;
+      margin-right: 15px;
+      cursor: pointer;
+    }
+    .btn-edit {
+      width: 114px;
+      height: 48px;
+      background: #F9F5FF;
+      border-radius: 16px;
+      border: none;
+      font-style: normal;
+      font-weight: 550;
+      font-size: 16px;
+      line-height: 16px;
+      color: #5C00D0;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,158 @@
+<div class="container">
+  <div class="header">
+    <div>
+      <img class="logo-logo" src="assets/images/logo-vvv.png">
+      <img class="logo" src="assets/images/investy.png">
+    </div>
+    <p style="color: var(--main-color)">Save to drafts</p>
+  </div>
+  <div class="content-body" *ngIf="nextState === 'first'">
+    <h1>Add your first offer!</h1>
+    <p>Share the information about your company, needs and amount to invest.</p>
+    <form class="form-container" [formGroup]="companyForm">
+      <mat-form-field appearance="none" class="add-border spacing">
+        <mat-label>Company name</mat-label>
+        <input matInput placeholder="pat@example.com" formControlName="companyName">
+      </mat-form-field>
+      <mat-form-field appearance="none" class="add-border spacing">
+        <mat-label>Industry</mat-label>
+        <mat-select formControlName="industry">
+          <mat-option [value]="item" *ngFor="let item of industryList">{{item.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="none" class="add-border spacing">
+        <mat-label>Product type</mat-label>
+        <mat-select formControlName="productType">
+          <mat-option [value]="item" *ngFor="let item of productList">{{item.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </form>
+    <div class="btn-container">
+      <button class="btn-later" (click)="onLater()">Add later</button>
+      <button class="btn-next" [ngClass]="{'enabled-btn-next': companyForm.valid}" (click)="onNext1()">Next
+        <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13.8571 6L8.85714 11M1 6H13.8571H1ZM13.8571 6L8.85714 1L13.8571 6Z" stroke="#999999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div class="content-body" *ngIf="nextState === 'second'">
+    <h1>Describe your company.</h1>
+    <p>Write about your company mission and goals to let investors interest in your offers</p>
+    <textarea [(ngModel)]="textAreaModel" id="" cols="30" rows="10"></textarea>
+    <div class="btn-container">
+      <button class="btn-later" (click)="onLater()">Add later</button>
+      <button class="btn-next" [ngClass]="{'enabled-btn-next': textAreaModel !== ''}" (click)="onNext2()">Next
+        <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13.8571 6L8.85714 11M1 6H13.8571H1ZM13.8571 6L8.85714 1L13.8571 6Z" stroke="#999999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div class="content-body" *ngIf="nextState === 'third'">
+    <h1>Documents</h1>
+    <p>Attach approval documents to ensure investors that you cooperate legally</p>
+    <div class="input-file-body">
+      Upload file or drag it here <br>
+      <span>&nbsp;</span>
+      <span>Make sure that file name contains document title</span>
+      <input type="file" (change)="handleFiles($event.target.files)">
+    </div>
+    <div class="pdf-container">
+      <div class="pdf-body" *ngFor="let file of pdfList; let idx = index">
+        <div class="pdf-item">
+          <div class="pdf-i">
+            <img class="img-pdf" src="assets/images/pdf.png">
+            <p>{{file.name | slice: 0:18}}...<span> 1.3 MB</span></p>
+            <mat-progress-bar *ngIf="file.show" mode="indeterminate"></mat-progress-bar>
+          </div>
+          <img class="img-cancel" src="assets/images/ic_cancel.png" (click)="removeFileByIndex(idx)">
+        </div>
+      </div>
+    </div>
+    <div class="btn-container">
+      <button class="btn-later" (click)="onLater()">Add later</button>
+      <button class="btn-next" [ngClass]="{'enabled-btn-next': pdfList.length > 0}" (click)="onNext3()">Next
+        <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13.8571 6L8.85714 11M1 6H13.8571H1ZM13.8571 6L8.85714 1L13.8571 6Z" stroke="#999999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div class="content-body" *ngIf="nextState === 'fourth'">
+    <h1>Loan terms</h1>
+    <p>Set the loan amount you need, and terms of payment for investors</p>
+    <form class="form-container" [formGroup]="addOfferForm">
+      <mat-form-field appearance="none" class="add-border spacing">
+        <mat-label>Loan amount</mat-label>
+        <input matInput mask="separator.2" thousandSeparator=" " placeholder="Loan amount" formControlName="loanAmount">
+      </mat-form-field>
+      <mat-form-field appearance="none" class="add-border spacing">
+        <mat-label>Days for fundraiser</mat-label>
+        <input matInput placeholder="Days for fundraiser" formControlName="fundraiser">
+      </mat-form-field>
+      <mat-form-field appearance="none" class="add-border spacing">
+        <mat-label>Investor benefit</mat-label>
+        <input matInput placeholder="Investor benefit" formControlName="benefit">
+      </mat-form-field>
+      <mat-form-field appearance="none" class="add-border spacing">
+        <mat-label>Minimum invest amount</mat-label>
+        <input matInput placeholder="Minimum invest amount" mask="separator.2" thousandSeparator=" " formControlName="minInvestAmount">
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="add-border spacing date-border">
+        <mat-label>Return deadline</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="deadline">
+        <mat-datepicker-toggle matSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <div class="special-offer" *ngIf="!specialOfferData">
+        <p>Need more money very soon?</p>
+        <p class="offer-link" (click)="onOpenModal()">Propose special offer</p>
+      </div>
+      <ng-container *ngIf="specialOfferData">
+        <div class="special-offer height-offer">
+          <p>Special offer</p>
+          <p>${{specialOfferData ? specialOfferData.amount : undefined | mask: 'separator.2'}}, {{specialOfferData?.fundraiser}} days, {{specialOfferData?.benefit}}% discount</p>
+          <p class="offer-link" (click)="onOpenModal()">Edit offer</p>
+        </div>
+      </ng-container>
+    </form>
+    <div class="total-return">
+      <div>
+        <p class="total">Total return</p>
+        <p (click)="onShowDetails()" class="details">Details <span><img [@rotatedState]='state' src="assets/images/ic_chevron.png"></span></p>
+      </div>
+      <p class="amount">${{totalAmount | mask : 'separator.2'}}</p>
+    </div>
+    <div class="detail-return" *ngIf="showDetails">
+      <div class="detail-item">
+        <p>Loan amount</p>
+        <p>${{addOfferForm.get('loanAmount').value | mask : 'separator.2'}}</p>
+      </div>
+      <div class="detail-item">
+        <p>Investor benefit</p>
+        <p>${{addOfferForm.get('loanAmount').value - 1000 | mask : 'separator.2'}} ({{addOfferForm.get('benefit').value ? addOfferForm.get('benefit').value + '%' : ''}})</p>
+      </div>
+      <ng-container *ngIf="showSpecial">
+        <div class="detail-item">
+          <p>Loan amount (special)</p>
+          <p>${{(specialOfferData.amount - 1000) | mask : 'separator.2'}}</p>
+        </div>
+        <div class="detail-item">
+          <p>Investor benefit (special)</p>
+          <p>${{(specialOfferData.amount - 2000) | mask : 'separator.2'}} ({{specialOfferData.benefit}}%)</p>
+        </div>
+      </ng-container>
+    </div>
+    <div class="btn-container">
+      <button class="btn-later" (click)="onLater()">Add later</button>
+      <button class="btn-next" [ngClass]="{'enabled-btn-next': addOfferForm.valid}" (click)="onSend()">Send
+        <svg width="15" height="12" viewBox="0 0 15 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13.8571 6L8.85714 11M1 6H13.8571H1ZM13.8571 6L8.85714 1L13.8571 6Z" stroke="#999999" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>

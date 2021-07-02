@@ -1,0 +1,100 @@
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .modal-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    img {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+  }
+  .modal-title {
+    width: auto;
+    height: auto;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 24px;
+    text-align: center;
+    color: #000000;
+  }
+  .modal-subtitle {
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    color: #999999;
+  }
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px;
+    .mat-input {
+      margin-bottom: 12px;
+    }
+  }
+  .total-return {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 24px;
+    width: 352px;
+    div{
+      .total {
+        width: auto;
+        height: auto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 16px;
+        color: #272727;
+      }
+      .details {
+        cursor: pointer;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 14px;
+        color: var(--main-color);
+        img {
+          width: 16px;
+          height: 16px;
+        }
+      }
+    }
+    .amount {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 24px;
+      color: #000000;
+    }
+  }
+  .detail-return {
+    .detail-item {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 352px;
+      p {
+        font-size: 16px;
+        line-height: 16px;
+        color: #999999;
+      }
+    }
+  }
+  .separator-line {
+    margin-top: 24px;
+    width: 352px;
+    height: 2px;
+  }
+  .btn-add-offer {
+    margin-top: 30px;
+    width: 352px;
+    height: 48px;
+    border-radius: 16px;
+    border: none;
+  }
+}

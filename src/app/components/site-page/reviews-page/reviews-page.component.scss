@@ -1,0 +1,110 @@
+.container {
+  background-color: white;
+  height: 100vh;
+  padding: 0 2rem;
+  .title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 40px;
+    color: var(--black-color);
+    margin-top: 32px;
+  }
+  .subtitle {
+    margin-top: 50px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    color: #272727;
+  }
+  .rating-body {
+    display: flex;
+    .rating-title {
+      width: 120px;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 0;
+      margin-right: 46px;
+      background: #F9F5FF;
+      border-radius: 8px;
+      .big {
+        width: auto;
+        height: auto;
+        font-weight: bold;
+        font-size: 32px;
+        line-height: 32px;
+        color: #5C00D0;
+      }
+      .small {
+        width: auto;
+        height: auto;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 14px;
+        color: #5C00D0;
+      }
+    }
+    .rating-progress {
+      width: 218px;
+      height: 120px;
+      display: flex;
+      .star-body {
+        width: 80px;
+        height: 100px;
+        display: flex;
+        flex-direction: row-reverse;
+        img {
+          width: 15px;
+          height: 15px;
+          cursor: pointer;
+        }
+      }
+      .rating-body {
+        display: flex;
+        height: 100px;
+        flex-direction: column;
+        justify-content: space-around;
+        .first-hr {
+          width: 162px;
+          height: 4px;
+          background: var(--main-color);
+          border-radius: 2px;
+        }
+        div {
+          width: 162px;
+          height: 4px;
+          background: #E4E4E4;
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+  .reviews-body {
+    .reviews {
+      .review-item {
+        width: 325px;
+        height: 104px;
+        background: #FFFFFF;
+        box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.05);
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 10px;
+        .review-user {
+          display: flex;
+          justify-content: space-between;
+          p {
+            width: auto;
+            height: auto;
+            font-size: 14px;
+            color: #999999;
+          }
+        }
+      }
+    }
+  }
+}

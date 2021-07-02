@@ -1,0 +1,35 @@
+<div class="container">
+  <p class="title">Balance</p>
+  <p class="info-title">My Balance</p>
+  <div class="balance-container">
+    <p class="balance-title">My balance</p>
+    <div class="come-container">
+      <p>$ 1M</p>
+      <div class="type-come">
+        <div>
+          <img src="assets/images/incomes.png">
+          <p class="income">Incomes</p>
+        </div>
+        <p class="amount">$150M</p>
+      </div>
+      <div class="type-come">
+        <div>
+          <img src="assets/images/outcomes.png">
+          <p class="outcome">Outcomes</p>
+        </div>
+        <p class="amount">$170M</p>
+      </div>
+    </div>
+  </div>
+  <div class="btn-container">
+    <button class="btn-update" (click)="onWithdraw()">Withdraw</button>
+    <button class="btn-update" (click)="onUpdate()">Update</button>
+  </div>
+  <p class="info-title">History</p>
+  <div class="history-container" *ngFor="let item of historyItems">
+    <div class="history-item">
+      <p class="type-amount">{{item.name}} <br><span>{{item.date}}</span></p>
+      <p class="in-amount">{{item.amount}}</p>
+    </div>
+  </div>
+</div>
